@@ -28,7 +28,7 @@ const statusConfig = {
 
 const speakerColors = [
   { bg: 'bg-blue-500', name: 'text-blue-700', light: 'bg-blue-50', border: 'border-blue-200' },
-  { bg: 'bg-purple-500', name: 'text-purple-700', light: 'bg-purple-50', border: 'border-purple-200' },
+  { bg: 'bg-teal-500', name: 'text-teal-700', light: 'bg-teal-50', border: 'border-teal-200' },
   { bg: 'bg-emerald-500', name: 'text-emerald-700', light: 'bg-emerald-50', border: 'border-emerald-200' },
   { bg: 'bg-orange-500', name: 'text-orange-700', light: 'bg-orange-50', border: 'border-orange-200' },
   { bg: 'bg-rose-500', name: 'text-rose-700', light: 'bg-rose-50', border: 'border-rose-200' },
@@ -91,8 +91,8 @@ function TranscriptView({ script }) {
       })}
 
       {data.outro && (
-        <div className="px-5 py-3 bg-purple-50 border-l-2 border-purple-400 rounded-r-lg mx-4 mt-3">
-          <p className="text-[10px] font-semibold text-purple-600 uppercase tracking-wider mb-1">Outro</p>
+        <div className="px-5 py-3 bg-teal-50 border-l-2 border-teal-400 rounded-r-lg mx-4 mt-3">
+          <p className="text-[10px] font-semibold text-teal-600 uppercase tracking-wider mb-1">Outro</p>
           <p className="text-sm text-ink leading-relaxed">{data.outro}</p>
         </div>
       )}
@@ -359,7 +359,7 @@ export default function PodcastDetailPage() {
 
       {/* Header */}
       <div className="flex items-start gap-5 mb-8">
-        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center shrink-0">
+        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/20">
           <Podcast className="w-7 h-7 text-white" />
         </div>
         <div className="flex-1">

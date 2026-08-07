@@ -14,7 +14,7 @@ const features = [
   {
     icon: Mic,
     title: 'Realistic Voices',
-    description: 'High-quality text-to-speech with Coqui XTTS. Natural pacing, intonation, and emotion.',
+    description: 'High-quality text-to-speech powered by ElevenLabs. Natural pacing, intonation, and emotion.',
   },
   {
     icon: Zap,
@@ -38,6 +38,9 @@ export default function Features() {
     <section className="py-24 bg-surface/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full mb-4">
+            Features
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Everything you need to podcast
           </h2>
@@ -50,10 +53,10 @@ export default function Features() {
           {features.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="p-6 bg-white rounded-2xl border border-border hover:border-accent/20 hover:shadow-sm transition-all group"
+              className="p-6 bg-white rounded-2xl border border-border hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all group"
             >
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors">
-                <Icon className="w-5 h-5 text-accent" />
+              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
+                <Icon className="w-5 h-5 text-blue-600" />
               </div>
               <h3 className="font-semibold mb-2">{title}</h3>
               <p className="text-sm text-muted leading-relaxed">{description}</p>

@@ -40,9 +40,31 @@ class Settings(BaseSettings):
     ELEVENLABS_TTS_ENABLED: str = "0"
     ELEVENLABS_API_KEY: str = ""
     ELEVENLABS_VOICE_ID: str = "21m00Tcm4TlvDq8ikWAM"
+    # Character-efficient model for single-voice synthesis (50% cheaper than v3)
+    ELEVENLABS_TTS_MODEL: str = "eleven_flash_v2_5"
+    # Model used for the multi-speaker Text to Dialogue API
+    ELEVENLABS_DIALOGUE_MODEL: str = "eleven_v3"
+    # Language code (ISO 639-1) passed to ElevenLabs for text normalization
+    ELEVENLABS_LANGUAGE_CODE: str = "en"
+    # Hard cap on characters sent per podcast episode (credit guard). ElevenLabs
+    # free plans grant ~10k credits, and credits map ~1:1 to characters.
+    ELEVENLABS_MAX_CHARS: int = 8000
+    # Max characters per single API request (ElevenLabs free plan allows 2.5k).
+    # Long single-voice scripts are split on sentence boundaries into requests
+    # of at most this many characters, then stitched back into one file.
+    ELEVENLABS_MAX_CHARS_PER_REQUEST: int = 2500
+    # Recommended per-request budget for the dialogue API (scaled by the same
+    # per-request cap so multi-speaker segments share a maximum window).
+    ELEVENLABS_DIALOGUE_CHARS_PER_REQUEST: int = 2000
 
-    # Available voices (comma-separated: provider:voice_id:name)
+# Available voices (comma-separated: provider:voice_id:name)
     AVAILABLE_VOICES: str = (
+        "elevenlabs:JBFqnCBsd6RMkjVDRZzb:host,"
+        "elevenlabs:EXAVITQu4vr4xnSDxMaL:guest,"
+        "elevenlabs:Xb7hH8MSUJpSbSDYk0k2:narrator,"
+        "elevenlabs:IKne3meq5aSn9XLyUdCD:deep,"
+        "elevenlabs:TX3LPaxmHKxFdv7VOQHJ:energetic,"
+        "elevenlabs:N2lVS1w4EtoT3dr4eOWO:british,"
         "edge:en-US-GuyNeural:host,"
         "edge:en-US-JennyNeural:guest,"
         "edge:en-US-AriaNeural:narrator,"
@@ -93,6 +115,11 @@ class Settings(BaseSettings):
         if self.ELEVENLABS_TTS_ENABLED == "1" and self.ELEVENLABS_API_KEY:
             providers.append("elevenlabs")
         return providers
+
+    @property
+    def elevenlabs_voices(self) -> list[dict]:
+        """ElevenLabs voices declared in AVAILABLE_VOICES (in declared order)."""
+        return [v for v in self.parsed_voices if v["provider"] == "elevenlabs"]
 
     @property
     def parsed_voices(self) -> list[dict]:

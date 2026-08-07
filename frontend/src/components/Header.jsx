@@ -21,7 +21,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg shadow-blue-500/20">
             <Headphones className="w-4.5 h-4.5 text-white" />
           </div>
           <span className="font-bold text-lg tracking-tight text-ink">PodcastMaker</span>
@@ -49,7 +49,7 @@ export default function Header() {
           {user ? (
             <Link
               to="/dashboard"
-              className="px-4 py-2 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors"
+              className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-lg transition-all shadow-md shadow-blue-500/20"
             >
               Dashboard
             </Link>
@@ -60,7 +60,7 @@ export default function Header() {
               </Link>
               <Link
                 to="/register"
-                className="px-4 py-2 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-lg transition-all shadow-md shadow-blue-500/20"
               >
                 Get Started
               </Link>
@@ -95,7 +95,7 @@ export default function Header() {
               <Link
                 to="/dashboard"
                 onClick={() => setMobileOpen(false)}
-                className="block w-full text-center px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg"
+                className="block w-full text-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg shadow-md shadow-blue-500/20"
               >
                 Dashboard
               </Link>
@@ -107,7 +107,7 @@ export default function Header() {
                 <Link
                   to="/register"
                   onClick={() => setMobileOpen(false)}
-                  className="block w-full text-center px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg"
+                  className="block w-full text-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg shadow-md shadow-blue-500/20"
                 >
                   Get Started
                 </Link>

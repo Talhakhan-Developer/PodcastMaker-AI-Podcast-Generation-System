@@ -29,9 +29,9 @@ export default function LoginPage() {
     <div className="min-h-screen flex">
       {/* Left panel — brand */}
       <div className="hidden lg:flex lg:w-1/2 bg-ink relative overflow-hidden items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-purple-600/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-teal-600/10" />
         <div className="relative z-10 text-center px-12">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center mx-auto mb-8">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center mx-auto mb-8 shadow-xl shadow-blue-500/30">
             <Headphones className="w-9 h-9 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-4 tracking-tight">
