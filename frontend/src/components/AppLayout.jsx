@@ -14,28 +14,13 @@ import {
   Podcast,
   Loader2,
   Circle,
+  Home,
 } from 'lucide-react';
 
-const navSections = [
-  {
-    label: 'Create',
-    items: [
-      { to: '/podcasts/new', icon: PlusCircle, label: 'New Podcast' },
-    ],
-  },
-  {
-    label: 'Manage',
-    items: [
-      { to: '/dashboard', icon: LayoutDashboard, label: 'All Podcasts' },
-    ],
-  },
+const navLinks = [
+  { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/podcasts/new', icon: PlusCircle, label: 'New Podcast' },
 ];
-
-const statusDot = {
-  ready: 'bg-success',
-  generating: 'bg-warning',
-  failed: 'bg-error',
-};
 
 export default function AppLayout() {
   const { user, logout } = useAuth();
@@ -116,34 +101,32 @@ export default function AppLayout() {
 
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto px-3 space-y-6">
-          {navSections.map(({ label, items }) => (
-            <div key={label}>
-              {!collapsed && (
-                <p className="px-3 mb-2 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
-                  {label}
-                </p>
-              )}
-              <div className="space-y-0.5">
-                {items.map(({ to, icon: Icon, label }) => (
-                  <NavLink
-                    key={to}
-                    to={to}
-                    className={({ isActive }) =>
-                      `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                        isActive
-                          ? 'bg-accent/20 text-white shadow-sm shadow-accent/10'
-                          : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
-                      } ${collapsed ? 'justify-center' : ''}`
-                    }
-                    title={collapsed ? label : undefined}
-                  >
-                    <Icon className="w-[18px] h-[18px] shrink-0" />
-                    {!collapsed && label}
-                  </NavLink>
-                ))}
-              </div>
+          <div>
+            {!collapsed && (
+              <p className="px-3 mb-2 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+                Menu
+              </p>
+            )}
+            <div className="space-y-0.5">
+              {navLinks.map(({ to, icon: Icon, label }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                      isActive
+                        ? 'bg-accent/20 text-white shadow-sm shadow-accent/10'
+                        : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                    } ${collapsed ? 'justify-center' : ''}`
+                  }
+                  title={collapsed ? label : undefined}
+                >
+                  <Icon className="w-[18px] h-[18px] shrink-0" />
+                  {!collapsed && label}
+                </NavLink>
+              ))}
             </div>
-          ))}
+          </div>
 
           {/* Podcasts list */}
           {!collapsed && podcasts.length > 0 && (
@@ -170,7 +153,12 @@ export default function AppLayout() {
                       }
                     >
                       <Circle
-                        className={`w-1.5 h-1.5 shrink-0 ${statusDot[podcast.status] || 'bg-slate-600'}`}
+                        className={`w-1.5 h-1.5 shrink-0 ${
+                          podcast.status === 'ready' ? 'bg-success'
+                            : podcast.status === 'generating' ? 'bg-warning'
+                            : podcast.status === 'failed' ? 'bg-error'
+                            : 'bg-slate-600'
+                        }`}
                         fill="currentColor"
                       />
                       <span className="truncate">{podcast.title}</span>
@@ -181,6 +169,25 @@ export default function AppLayout() {
                   ))
                 )}
               </div>
+            </div>
+          )}
+
+          {/* Back to site */}
+          {!collapsed && (
+            <div className="pt-4 border-t border-white/[0.06]">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                    isActive
+                      ? 'bg-white/[0.06] text-white'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+                  }`
+                }
+              >
+                <Home className="w-[18px] h-[18px] shrink-0" />
+                Back to Site
+              </NavLink>
             </div>
           )}
         </nav>
