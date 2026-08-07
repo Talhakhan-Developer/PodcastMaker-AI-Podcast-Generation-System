@@ -17,7 +17,7 @@ const steps = [
     icon: Headphones,
     step: '03',
     title: 'Get your audio',
-    description: 'Coqui XTTS turns the script into realistic audio with distinct voices for each speaker.',
+    description: 'ElevenLabs turns the script into realistic audio with distinct voices for each speaker.',
   },
 ];
 
@@ -26,22 +26,25 @@ export default function HowItWorks() {
     <section className="py-24 bg-surface/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full mb-4">
             How it works
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            Three steps to your podcast
           </h2>
           <p className="text-muted max-w-lg mx-auto">
-            Three steps from idea to finished podcast episode.
+            From idea to finished episode in minutes, not hours.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {steps.map(({ icon: Icon, step, title, description }, i) => (
-            <div key={step} className="text-center">
+          {steps.map(({ icon: Icon, step, title, description }) => (
+            <div key={step} className="text-center group">
               <div className="relative inline-flex mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <Icon className="w-7 h-7 text-accent" />
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                  <Icon className="w-7 h-7 text-blue-600" />
                 </div>
-                <span className="absolute -top-2 -right-2 w-6 h-6 bg-accent text-white text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30">
                   {step}
                 </span>
               </div>

@@ -21,9 +21,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center">
-                <Headphones className="w-4.5 h-4.5 text-white" />
-              </div>
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <Headphones className="w-4.5 h-4.5 text-white" />
+            </div>
               <span className="font-bold text-lg tracking-tight">PodcastMaker</span>
             </Link>
             <p className="text-sm text-white/50 leading-relaxed max-w-xs">

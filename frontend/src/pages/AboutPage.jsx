@@ -98,7 +98,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-white rounded-xl">
-              <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xs">N</div>
+              <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xs">N</div>
               <div>
                 <p className="font-medium text-ink">Next.js</p>
                 <p className="text-xs">Modern React frontend</p>

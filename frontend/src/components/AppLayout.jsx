@@ -62,7 +62,7 @@ export default function AppLayout() {
         {/* Logo */}
         <div className="h-16 flex items-center justify-between px-4">
           <Link to="/dashboard" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center shrink-0 shadow-lg shadow-accent/20">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/20">
               <Headphones className="w-4.5 h-4.5 text-white" />
             </div>
             {!collapsed && (
@@ -90,7 +90,7 @@ export default function AppLayout() {
               </div>
               <div>
                 <div className="flex items-center gap-1.5 mb-1">
-                  <BarChart3 className="w-3 h-3 text-purple-400" />
+                  <BarChart3 className="w-3 h-3 text-teal-400" />
                   <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Episodes</span>
                 </div>
                 <p className="text-xl font-bold text-white">{stats.episodes}</p>
@@ -195,7 +195,7 @@ export default function AppLayout() {
         {/* User section */}
         <div className="p-3 border-t border-white/[0.06]">
           <div className={`flex items-center gap-3 ${collapsed ? 'justify-center' : ''}`}>
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center text-xs font-bold text-white shrink-0 ring-2 ring-white/10">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center text-xs font-bold text-white shrink-0 ring-2 ring-white/10">
               {user?.username?.[0]?.toUpperCase() || '?'}
             </div>
             {!collapsed && (

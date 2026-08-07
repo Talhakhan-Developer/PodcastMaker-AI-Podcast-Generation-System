@@ -47,8 +47,8 @@ function PodcastCard({ podcast, onDelete }) {
       className="group block p-5 bg-white border border-border rounded-2xl hover:border-accent/30 hover:shadow-md transition-all"
     >
       <div className="flex items-start justify-between mb-3">
-        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/10 to-purple-500/10 flex items-center justify-center">
-          <Podcast className="w-5.5 h-5.5 text-accent" />
+        <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+          <Podcast className="w-5.5 h-5.5 text-blue-600" />
         </div>
         <div className="flex items-center gap-2">
           <span className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ${st.bg} ${st.text}`}>
@@ -138,7 +138,7 @@ export default function DashboardPage() {
         </div>
         <Link
           to="/podcasts/new"
-          className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-accent to-purple-500 hover:from-accent-hover hover:to-purple-600 text-white font-medium rounded-xl shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all"
+          className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
         >
           <PlusCircle className="w-4 h-4" />
           New Podcast
@@ -148,7 +148,7 @@ export default function DashboardPage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
         <StatCard icon={Podcast} label="Total Shows" value={podcasts.length} color="text-accent" bgColor="bg-accent/10" />
-        <StatCard icon={Mic} label="Episodes" value={episodeCount} color="text-purple-500" bgColor="bg-purple-500/10" />
+        <StatCard icon={Mic} label="Episodes" value={episodeCount} color="text-teal-500" bgColor="bg-teal-500/10" />
         <StatCard icon={Zap} label="Ready" value={readyCount} color="text-emerald-500" bgColor="bg-emerald-500/10" />
       </div>
 
@@ -183,7 +183,7 @@ export default function DashboardPage() {
             </p>
             <Link
               to="/podcasts/new"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-purple-500 hover:from-accent-hover hover:to-purple-600 text-white font-medium rounded-xl shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
             >
               <PlusCircle className="w-4 h-4" />
               Create Podcast
