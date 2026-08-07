@@ -16,7 +16,7 @@ from ...models.podcast import (
     Voice,
 )
 from ...services.llm.service import llm_service
-from ...services.tts.service import synthesize
+from ...services.tts.service import estimate_characters, synthesize
 
 
 class PodcastService:
@@ -194,6 +194,17 @@ class PodcastService:
             if not full_text:
                 full_text = episode.script
 
+            # ElevenLabs credit guard: estimate the character cost up front so we
+            # never silently blow a small credit budget.
+            if "elevenlabs" in settings.enabled_tts_providers and settings.TTS_PROVIDER == "elevenlabs":
+                estimated = estimate_characters(script_data)
+                if estimated > settings.ELEVENLABS_MAX_CHARS:
+                    raise RuntimeError(
+                        f"This script needs ~{estimated:,} characters of ElevenLabs audio, exceeding the "
+                        f"configured guard of {settings.ELEVENLABS_MAX_CHARS:,} chars. Lower the episode "
+                        "duration or raise ELEVENLABS_MAX_CHARS in backend/.env to continue."
+                    )
+
             log.info(f"TTS for episode {episode_id}, text_len={len(full_text)}")
 
             output_file = f"ep_{episode_id.hex[:8]}.mp3"
@@ -201,6 +212,7 @@ class PodcastService:
                 text=full_text,
                 output_filename=output_file,
                 voice=voice,
+                script_data=script_data,
             )
 
             episode.audio_file_path = audio_path
